@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>Radar Animation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #000; /* optional */
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <img id="radarGif" src="https://res.cloudinary.com/dnzyvy1zq/image/upload/radar_izm_animation.gif" alt="Radar GIF">
+
+  <script>
+    // Ανανεώνει το GIF κάθε 15 δευτερόλεπτα
+    setInterval(() => {
+      const gif = document.getElementById("radarGif");
+      gif.src = "https://res.cloudinary.com/dnzyvy1zq/image/upload/radar_izm_animation.gif?v=" + Date.now();
+    }, 150000); // 150000 ms = 150 δευτ.
+  </script>
+</body>
+</html>
