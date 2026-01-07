@@ -2,35 +2,35 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <title>Radar Animation (Stretched)</title>
+  <title>Radar Animation</title>
   <style>
-    /* Μηδενισμός περιθωρίων για να μην έχουμε λευκά κενά */
     html, body {
       margin: 0;
       padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff; /* Λευκό background για όλη τη σελίδα */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden; /* Αποφεύγει τυχόν scrollbars */
+    }
+
+    #radarContainer {
       width: 100%;
       height: 100%;
       background: #ffffff;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden; /* Εξαφανίζει τα scrollbars */
-    }
-
-    #radarContainer {
-      width: 100%;
-      height: 100%;
-      display: flex;
     }
 
     img {
-      /* Το "μαγικό" stretch: */
-      width: 100%;
-      height: 100%;
-      object-fit: fill; /* Τεντώνει την εικόνα για να γεμίσει το container */
-      
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
       display: block;
-      border: none;
+      background: #ffffff;
     }
   </style>
 </head>
@@ -44,17 +44,18 @@
     const radarImg = document.getElementById("radarGif");
     const baseUrl = "https://res.cloudinary.com/dnzyvy1zq/image/upload/radar_izm_animation.gif";
 
+    // Συνάρτηση που ανανεώνει την εικόνα
     function updateRadar() {
-      // Παράκαμψη cache με timestamp
+      // Προσθέτουμε το timestamp για να παρακάμψουμε την cache
       radarImg.src = baseUrl + "?v=" + Date.now();
-      console.log("Radar refreshed: " + new Date().toLocaleTimeString());
+      console.log("Radar updated at: " + new Date().toLocaleTimeString());
     }
 
-    // Άμεση εκτέλεση στο άνοιγμα
+    // 1. Άμεση εκτέλεση με το που φορτώνει το script
     updateRadar();
 
-    // Ανανέωση κάθε 150 δευτερόλεπτα (2.5 λεπτά)
-    setInterval(updateRadar, 150000);
+    // 2. Επαναλαμβανόμενη εκτέλεση κάθε 150 δευτερόλεπτα
+    setInterval(updateRadar, 150000); 
   </script>
 
 </body>
